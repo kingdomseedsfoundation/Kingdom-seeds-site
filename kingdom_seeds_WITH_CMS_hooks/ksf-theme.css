@@ -1,0 +1,14 @@
+:root { --ksf-green:#1c7c3c; --ksf-green-dark:#155f2d; --ksf-border:#d1d5db; }
+button[type="submit"], input[type="submit"], .btn-submit{
+  background:var(--ksf-green); border:1px solid var(--ksf-green); color:#fff;
+  font-weight:700; border-radius:999px; padding:12px 20px; cursor:pointer;
+  transition:background .2s ease, border-color .2s ease, opacity .2s ease;
+}
+button[type="submit"]:hover, input[type="submit"]:hover, .btn-submit:hover{
+  background:var(--ksf-green-dark); border-color:var(--ksf-green-dark);
+}
+button[type="submit"][disabled], input[type="submit"][disabled]{ opacity:.6; cursor:not-allowed;}
+input, textarea, select{ border:1px solid var(--ksf-border); border-radius:10px; padding:10px 12px;}
+.ksf-thanks{ background:#f0fdf4; border:1px solid #bbf7d0; color:#065f46;
+  border-radius:12px; padding:14px 16px; margin:10px 0; font-weight:600;}
+.nav-drawer a{ display:block; padding:10px 12px;} .nav-drawer a + a{ border-top:1px solid #ececec;}

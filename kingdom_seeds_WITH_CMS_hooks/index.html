@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kingdom Seeds Foundation</title>
+<link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="styles.css">
+<style>nav a, .site-nav a, .navbar a, .menu a { white-space: nowrap; }
+/* === KSF mobile header row + sticky panel === */
+@media (max-width: 640px){
+  .site-header .container.header-split{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  header nav{display:none !important;}
+  #ksfHamburger{display:inline-flex}
+  .center-brand{font-weight:800;color:#c5a22e}
+}
+.kSF-no-scroll{overflow:hidden;height:100vh}
+#ksfMobileMenu{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(2,6,23,.12);max-height:0;overflow:hidden;transition:max-height .25s ease;z-index:50}
+#ksfMobileMenu.open{max-height:100vh;height:100vh}
+#ksfMobileMenu .ksf-mobile-links{display:grid;gap:6px;padding:14px 16px 22px;height:calc(100vh - 0px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+
+
+/* --- FIXED MOBILE MENU --- */
+@media (max-width: 640px){
+  .site-header .container.header-split{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  header nav{ display:none !important; }
+  #ksfHamburger{ display:inline-flex; }
+}
+.site-header{ position:sticky; top:0; z-index:1000; }
+#ksfMobileMenu{
+  position:fixed; top:0; left:0; right:0;
+  background:#fff; border-bottom:1px solid #e2e8f0;
+  box-shadow:0 10px 30px rgba(2,6,23,.12);
+  transform:translateY(-100%);
+  pointer-events:none;
+  transition:transform .25s ease;
+  z-index:999;
+}
+#ksfMobileMenu.open{
+  transform:translateY(0);
+  height:100vh;
+  pointer-events:auto;
+}
+#ksfMobileMenu .ksf-mobile-links{
+  display:grid; gap:8px; padding:14px 16px 22px;
+  height:calc(100vh - 0px);
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+}
+.kSF-no-scroll{ overflow:hidden; height:100vh; }
+
+/* --- Mobile panel link styling for cloned desktop navs --- */
+#ksfMobileMenu .ksf-mobile-links a{ display:block; padding:12px 8px; border-radius:10px; color:#0f172a; text-decoration:none; }
+#ksfMobileMenu .ksf-mobile-links a:hover{ background:#f1f5f9; }
+#ksfMobileMenu .ksf-mobile-links li{ list-style:none; }
+#ksfMobileMenu .ksf-mobile-links ul{ padding:0; margin:0; display:grid; gap:8px; }
+
+/* --- tighter spacing for mobile panel links --- */
+#ksfMobileMenu .ksf-mobile-links{ gap:6px; }
+#ksfMobileMenu .ksf-mobile-links a{ display:block; padding:10px 8px; }
+</style>
+
+<style>
+.faq-item { border-bottom: 1px solid #e2e8f0; }
+.faq-question { width:100%; text-align:left; background:#fff; border:0; padding:14px 0; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.faq-answer { overflow:hidden; max-height:0; transition:max-height .25s ease; }
+.faq-item.open .faq-answer { max-height: 1200px; }
+.faq-question:focus { outline: 2px solid #1C7C3C; outline-offset: 2px; }
+</style>
+
+
+<style>
+/* Mobile polish pack */
+@media (max-width: 420px) {
+  nav {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a { flex: 0 0 auto; }
+}
+img, video, iframe { max-width: 100%; height: auto; }
+html, body { overflow-x: hidden; }
+</style>
+
+
+<style>
+/* --- Mobile Hamburger (≤600px) | non-intrusive --- */
+.ksf-hamburger{display:none; align-items:center; gap:8px; border:1px solid #1C7C3C; background:#fff; color:#1C7C3C; border-radius:12px; padding:8px 12px; font-weight:700; cursor:pointer;}
+.ksf-hamburger .bars{width:18px;height:2px;background:#1C7C3C;position:relative;display:block}
+.ksf-hamburger .bars:before,.ksf-hamburger .bars:after{content:"";position:absolute;left:0;width:18px;height:2px;background:#1C7C3C}
+.ksf-hamburger .bars:before{top:-6px}.ksf-hamburger .bars:after{top:6px}
+.ksf-mobile-menu{display:none; position:fixed; top:0; left:0; right:0; max-height:0; overflow:hidden;
+  background:#ffffff; border-bottom:1px solid #e2e8f0; box-shadow:0 10px 30px rgba(2,6,23,.15);
+  transition:max-height .28s ease; z-index:1002;}
+.ksf-mobile-menu.open{max-height:70vh;}
+.ksf-mobile-menu .inner{padding:14px 20px;}
+.ksf-mobile-links a{display:block; padding:12px 6px; text-decoration:none; color:#0f172a; border-radius:10px;}
+.ksf-mobile-links a:hover{background:#f1f5f9}
+
+@media (max-width: 600px){
+  /* Hide desktop nav only on small phones */
+  header nav{display:none !important;}
+  .ksf-hamburger{display:inline-flex;}
+  .ksf-mobile-menu{display:block;}
+}
+</style>
+
+<style id="ksf-homepage-button-fix">
+.volunteer-submit, .newsletter-submit, .host-workshop-btn {
+  background-color: #13653f !important;
+  border: 1.5px solid #13653f !important;
+  color: #ffffff !important;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+</style>
+<style id="ksf-inline-thanks-style">
+.thanks-box[hidden]{display:none!important;}
+.thanks-box{margin-top:12px;border:1px solid #e5e7eb;padding:12px;border-radius:8px;background:#fff;}
+</style>
+</head><body>
+
+<header class="site-header">
+  <div class="container header-split"><button class="ksf-hamburger" type="button" id="ksfHamburger" aria-controls="ksfMobileMenu" aria-expanded="false">
+  <span class="bars" aria-hidden="true"></span><span>Menu</span>
+</button>
+    <nav class="nav-left">
+      <a href="#mission-hero">Mission</a></a>
+      <a href="#programs">Programs</a></a>
+      <a href="#workshops">Workshops</a></a>
+    </nav>
+    <div class="center-brand">Kingdom Seeds Foundation</div>
+    <nav class="nav-right">
+      <a href="#goals">Monthly Goals</a></a>
+      <a href="#get-involved">Get Involved</a></a>
+      <a href="#about">About</a></a>
+    </nav>
+  </div>
+
+<!-- Mobile hamburger trigger and drop panel -->
+
+<div class="ksf-mobile-menu" id="ksfMobileMenu" role="dialog" aria-modal="true" aria-labelledby="ksfHamburger">
+  <div class="inner">
+    <div class="ksf-mobile-links" id="ksfMobileLinks" class="ksf-mobile-links"><!-- links injected from <nav> --></div>
+  </div>
+</div>
+
+</header>
+
+<section id="home" class="hero">
+  <div class="container hero-inner" id="mission-hero">
+    <img class="hero-logo" src="assets/logo.png" alt="">
+    <h1 class="hero-title"><span data-cms="hero_tagline">Rooted in Faith. Growing in Purpose.</span></h1>
+    <h2 class="section-title">Our Mission</h2>
+    <p class="hero-mission">To build a Christ-centered community that restores hope and equips youth and young adults with biblical teaching, stewardship, and mentorship for education, trades, or entrepreneurship—empowering them to walk in purpose and impact the Kingdom.</p>
+    <div class="cta">
+      <a class="btn dbox-donation-button dbox-donation-button" href="https://donorbox.org/kingdom-seeds-foundation" id="donate-hero" class="donate-link dbox-donation-button dbox-donation-button">Donate</a></a>
+      <a class="btn outline btn-outline btn-pill btn-newsletter" href="#newsletter">Join Newsletter</a></a>
+    </div>
+  </div>
+</section>
+
+<section id="programs" class="section">
+  <div class="container">
+    <h2 class="section-title">Programs</h2>
+    <div class="grid">
+      <div class="card"><h3>Mentorship Circles</h3><p>Weekly small groups for spiritual growth & life planning.</p></div>
+      <div class="card"><h3>Faith & Stewardship</h3><p>Bible studies with budgeting, credit, and practical resource management.</p></div>
+      <div class="card"><h3>Career Launch</h3><p>Resumes, mock interviews, trades & college pathways.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="workshops" class="section alt">
+  <div class="container">
+    <h2 class="section-title">Workshops & Partnerships</h2>
+    <div class="grid">
+      <div class="card"><h3>Bank-Led Financial Literacy</h3><p>Invite banks and credit unions to co-lead sessions and provide packets.</p></div>
+      <div class="card"><h3>Faith-Based Workshops</h3><p>Christ-centered Bible studies and activities that strengthen identity and purpose.</p></div>
+      <div class="card"><h3>School & Church Events</h3><p>Assemblies and youth nights with interactive games and mentorship.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <div style="font-weight:900;margin-bottom:10px;">Interested in partnering?</div>
+      <a class="btn outline" href="#contact-workshop" style="border: 1.5px solid #13653f;">Request a partnership</a></a>
+    </div>
+  </div>
+</section>
+
+<section id="photos" class="section">
+  <div class="container">
+    <h2 class="section-title">Photos</h2>
+    <div class="gallery">
+      <div class="card" style="height:160px"></div>
+      <div class="card" style="height:160px"></div>
+      <div class="card" style="height:160px"></div>
+      <div class="card" style="height:160px"></div>
+      <div class="card" style="height:160px"></div>
+      <div class="card" style="height:160px"></div>
+    </div>
+  </div>
+</section>
+
+<section id="goals" class="section">
+  <div class="container">
+    <h2 class="section-title">Monthly Goals</h2>
+    <ul style="line-height:1.9;font-size:1.08rem;padding-left:20px;max-width:900px;margin:0 auto;text-align:left;">
+      <li><strong>Welcome 10 new mentees into our mentorship circles this month</strong> — building a strong foundation for growth.</li>
+      <li><strong>Launch 3–5 Faith & Stewardship workshops with Bible studies</strong> — helping mentees connect biblical principles with managing their resources wisely.</li>
+      <li><strong>Host monthly fellowships</strong> — giving mentees a place to connect, grow spiritually, and build lasting community.</li>
+      <li><strong>Form partnerships with local churches and schools</strong> — bringing mentorship and stewardship teaching directly to mentees.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="get-involved" class="section alt getinvolved">
+  <div class="container">
+    <h2 class="section-title">Get Involved</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Volunteer / Mentor</h3>
+        <form data-netlify-honeypot="bot-field" name="volunteer" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" data-inline-thanks="volunteer">
+          <input type="hidden" name="form-name" value="volunteer">
+          <input type="text" name="bot-field" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label>Name<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Phone<input type="tel" name="phone"></label>
+          <label>How would you like to serve?<textarea name="message" rows="3"></textarea></label>
+          <button class="btn volunteer-submit" type="submit">Submit</button>
+          <p class="form-success" hidden>Thank you for signing up to serve with Kingdom Seeds Foundation. A team member will connect with you soon.</p>
+        </form>
+<div id="thanks-volunteer" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+      </div>
+      <div class="card">
+        <h3>Donate</h3>
+        <p>Your generosity fuels mentorship, workshops, and resources for our mentees.</p>
+        <a class="btn dbox-donation-button dbox-donation-button dbox-donation-button" href="https://donorbox.org/kingdom-seeds-foundation" >Give Now</a></a>
+      </div>
+      <div class="card">
+  <h3>Become a Mentee</h3>
+  <ul class="mentee-checklist">
+    <li>Build strong mentorship connections</li>
+    <li>Learn biblical stewardship of resources</li>
+    <li>Grow and learn through workshops</li>
+    <li>Receive support from a Christ-centered community that empowers you to walk in purpose</li>
+  </ul>
+  <button class="btn" type="button" id="open-mentee-modal">Apply Now</button>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-workshop" class="section">
+  <div class="container split">
+    <div class="contact-box" id="about">
+      <h3>About Us</h3>
+      <p class="about-blurb">
+        Kingdom Seeds Foundation was born from a desire to create a safe space where faith and practical life skills meet. We believe every person deserves guidance, encouragement, and resources to grow in purpose.
+      </p>
+      <p><strong>Email:</strong> <a href="mailto:info@kingdomseedsfoundation.org" data-cms="contact_email">info@kingdomseedsfoundation.org</a></a></p>
+      <p><strong>Location:</strong> <span data-cms="location">Houston, TX</span></p>
+      
+<!-- Social links (app-style icons, 30px, in a row) -->
+<div class="social-row app-icons">
+  <a href="https://instagram.com/kingdomseedsfoundation" aria-label="Instagram" target="_blank" rel="noopener" class="social-link" title="Instagram" data-cms="instagram">
+    <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+      <defs>
+        <linearGradient id="igAppGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f58529"/>
+          <stop offset="40%" stop-color="#dd2a7b"/>
+          <stop offset="100%" stop-color="#8134AF"/>
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#igAppGrad)"/>
+      <circle cx="20" cy="20" r="7" fill="#fff"/>
+      <circle cx="29" cy="12" r="2.2" fill="#fff"/>
+      <circle cx="20" cy="20" r="4.5" fill="url(#igAppGrad)"/>
+    </svg>
+  </a></a>
+  <a href="https://www.tiktok.com/@kingdomseedsfoundation" aria-label="TikTok" target="_blank" rel="noopener" class="social-link" title="TikTok" data-cms="tiktok">
+    <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="2" y="2" width="36" height="36" rx="8" fill="#000000"/>
+      <path d="M23 10c1.3 2 3 3.2 5 3.4v3.2c-1.9-.1-3.6-.7-5-1.7v8.7a7.8 7.8 0 1 1-7.8-7.8c.7 0 1.3.1 1.9.3v3.1a4.7 4.7 0 1 0 3.1 4.4V10h2.8z" fill="#ffffff"/>
+      <path d="M17.1 23.8a2.9 2.9 0 0 1-4.5-2.4 2.9 2.9 0 0 1 3.7-2.7v2.4a2.9 2.9 0 0 0-.7 1.7c0 .23.05.46.1.69z" fill="#69C9D0"/>
+      <path d="M28 14.2c.8.5 1.7.8 2.6.9v-2.8c-.9-.1-1.8-.4-2.6-.9z" fill="#EE1D52"/>
+    </svg>
+  </a></a>
+  <a href="https://www.facebook.com/share/1ESEWvSdsy/?mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener" class="social-link" title="Facebook" data-cms="facebook">
+    <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="2" y="2" width="36" height="36" rx="8" fill="#1877F2"/>
+      <path d="M21.8 30V21.3h3l.5-3.4h-3.5v-2.2c0-1 .3-1.7 1.8-1.7h1.9v-3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v2.6h-2.9v3.4h2.9V30h3.2z" fill="#ffffff"/>
+    </svg>
+  </a></a>
+</div>
+
+
+      <div class="card" id="newsletter">
+        <h3>Join the Newsletter</h3>
+        <form data-netlify-honeypot="bot-field" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" data-inline-thanks="newsletter">
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="text" name="bot-field" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label>Email<input type="email" name="email" required></label>
+          <button class="btn newsletter-submit" type="submit">Subscribe</button>
+          <p class="small-note">Privacy: We respect your privacy. Your information is only used for Kingdom Seeds Foundation communication.</p>
+          <p class="form-success" hidden>Thank you for subscribing to the Kingdom Seeds Foundation newsletter. You’ll receive updates and resources directly in your inbox.</p>
+        </form>
+<div id="thanks-newsletter" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+      </div>
+    </div>
+    <div class="workshop-col">
+      <h2 class="section-title">Host a Workshop</h2>
+      <form data-netlify-honeypot="bot-field" name="workshop" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form" data-inline-thanks="workshop">
+        <input type="hidden" name="form-name" value="workshop">
+        <input type="text" name="bot-field" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Organization Name<input type="text" name="org" required></label>
+        <label>Contact Person<input type="text" name="contact" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Workshop Type
+          <select name="topic">
+            <option>Faith (Bible Studies)</option>
+            <option>Stewardship (Resources & Finances)</option>
+            <option>Credit 101</option>
+            <option>Career Launch</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Message (optional)<textarea name="message" rows="3"></textarea></label>
+        <button class="btn host-workshop-btn" type="submit">Host a Workshop</button>
+        <p class="form-success" hidden>Thank you—your request was received. A team member will reach out to you soon.</p>
+      </form>
+<div id="thanks-workshop" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+    </div>
+  </div>
+</section>
+
+<section id="faqs" class="section">
+  <div class="container">
+    <h2 class="section-title">FAQs</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-question">Does mentorship cost?</button><div class="faq-answer">No — mentorship is free and supported by donations and partners.</div></div>
+      <div class="faq-item"><button class="faq-question">Who can become a mentee?</button><div class="faq-answer">Anyone looking for guidance in faith, stewardship, career, or life skills. We welcome people of all ages and backgrounds who want to grow in purpose.</div></div>
+      <div class="faq-item"><button class="faq-question">How do I sign up to be a volunteer or mentor?</button><div class="faq-answer">Fill out the Volunteer/Mentor form in the “Get Involved” section and our team will connect with you.</div></div>
+      <div class="faq-item"><button class="faq-question">What kinds of workshops do you offer?</button><div class="faq-answer">We offer Christ-centered workshops in Faith (Bible studies), Stewardship (resources &amp; finances), Credit 101, and Career Launch. We also collaborate with schools, churches, businesses, and community groups to host customized events that serve their members.</div></div>
+      <div class="faq-item"><button class="faq-question">How do donations get used?</button><div class="faq-answer">Donations directly support mentorship programs, workshops, and resources for mentees. As we grow, we’ll publish financial reports for full transparency.</div></div>
+      <div class="faq-item"><button class="faq-question">Can my organization partner with Kingdom Seeds Foundation?</button><div class="faq-answer">Yes — we welcome partnerships with churches, schools, businesses, and community groups. Fill out the “Host a Workshop” form or contact us to discuss opportunities.</div></div>
+      <div class="faq-item"><button class="faq-question">How can I stay updated on events and progress?</button><div class="faq-answer">Subscribe to our newsletter or follow us on Instagram, TikTok, and Facebook for the latest updates.</div></div>
+      <div class="faq-item"><button class="faq-question">Is Kingdom Seeds Foundation a nonprofit organization?</button><div class="faq-answer">Yes — we are established as a nonprofit and are committed to transparency, stewardship, and community impact.</div></div>
+      <div class="faq-item"><button class="faq-question">Where is Kingdom Seeds Foundation located?</button><div class="faq-answer">We are based in Houston, Texas, and serve mentees locally and online as we grow.</div></div>
+      <div class="faq-item"><button class="faq-question">How can I contact Kingdom Seeds Foundation for other questions?</button><div class="faq-answer">You can reach us anytime at <a href="mailto:info@kingdomseedsfoundation.org" data-cms="contact_email">info@kingdomseedsfoundation.org</a></a>.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container">
+  <small>© 2025 Kingdom Seeds Foundation · <a href="mailto:info@kingdomseedsfoundation.org" data-cms="contact_email">info@kingdomseedsfoundation.org</a></a> · <a data-privacy-link="true" href="#" id="open-privacy">Privacy Policy</a></a></small>
+</div></footer>
+
+<!-- Mentee Application Modal -->
+
+<!-- Mentee Application Modal (single-column) -->
+<div id="mentee-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="menteeTitle">
+  <div class="modal-backdrop" id="mentee-backdrop"></div>
+  <div class="modal-card">
+    <button class="modal-close" id="mentee-close" aria-label="Close" onclick="closeMentee()">×</button>
+    <div class="modal-header">
+      <h3 id="menteeTitle" class="modal-title">Mentee Application</h3>
+    </div>
+    <div class="modal-body">
+      <p class="required-note"><em>Fields marked with <span style="color:red">*</span> are required.</em></p>
+<form data-netlify-honeypot="bot-field" id="mentee-form" name="mentee-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="mentee-application">
+        <input type="hidden" name="form-name" value="mentee-application">
+        <p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+        <div class="stack">
+          <div class="row">
+            <label class="top">Full Name <span aria-hidden="true">*</span></label>
+            <input type="text" name="full_name" required>
+          </div>
+
+          <div class="row">
+            <label class="top">Date of Birth (mm/dd/yyyy) <span aria-hidden="true">*</span></label>
+            <input type="date" name="dob" required>
+          </div>
+
+          <div class="row">
+            <label class="top">Email <span aria-hidden="true">*</span></label>
+            <input type="email" name="email" required>
+          </div>
+
+          <div class="row">
+            <label class="top">Parent/Guardian Name (if under 17)</label>
+            <input type="text" name="parent_name" placeholder="Parent/guardian full name">
+          </div>
+
+          <div class="row">
+            <label class="top">Parent/Guardian Contact (if under 17)</label>
+            <input type="text" name="parent_contact" placeholder="Parent/guardian phone or email">
+          </div>
+
+          <div class="row">
+            <label class="top">What are you looking to gain from Kingdom Seeds Foundation? <span aria-hidden="true">*</span></label>
+            <textarea name="goals" required placeholder="Share how we can best support you."></textarea>
+          </div>
+
+          <!-- Program Consent -->
+          <div class="consent">
+            <h4>Program Consent (required)</h4>
+            <label class="inline">
+              <input type="checkbox" name="program_consent" required>
+              <span>I consent to participate in Kingdom Seeds Foundation mentorship programs. If the applicant is under 17, I confirm I am the parent/guardian providing consent.</span>
+            </label>
+          </div>
+
+          <!-- Social Consent -->
+          <div class="consent">
+            <h4>Social Media &amp; Media Consent (optional)</h4>
+            <p><em>Kingdom Seeds Foundation may take photos, videos, or testimonies during events and activities. With your permission, we may use these for our social media, newsletters, or to share testimonies that inspire others. <strong>Choosing not to consent will not affect your ability to participate in any way.</strong></em></p>
+            <div class="choices">
+              <label><input type="radio" name="social_consent" value="yes"> Yes, I consent</label>
+              <label><input type="radio" name="social_consent" value="no"> No, I do not consent</label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Submit Application</button>
+            <button type="button" class="btn btn-secondary" onclick="closeMentee()">Cancel</button>
+          </div>
+        </div>
+      </form>
+<div id="thanks-mentee-application" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+(function(){
+  var openLink = document.getElementById('open-privacy');
+  var modal = document.getElementById('privacy-modal');
+  var closeBtn = document.getElementById('privacy-close');
+  var backdrop = document.getElementById('privacy-close-backdrop');
+  function open(){ lastScrollY = window.scrollY; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('kSF-no-scroll'); } }
+  function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('kSF-no-scroll'); window.scrollTo({top:lastScrollY||0}); } }
+  if(openLink){ openLink.addEventListener('click', function(e){ e.preventDefault(); open(); }); }
+  if(closeBtn){ closeBtn.addEventListener('click', close); }
+  if(backdrop){ backdrop.addEventListener('click', close); }
+})();
+</script>
+
+
+<script>
+(function(){
+  var yes = document.getElementById('social_yes');
+  var no = document.getElementById('social_no');
+  function toggleExclusive(e){
+    if(!yes || !no) return;
+    if(e.target === yes && yes.checked){ no.checked = false; }
+    if(e.target === no && no.checked){ yes.checked = false; }
+  }
+  if(yes){ yes.addEventListener('change', toggleExclusive); }
+  if(no){ no.addEventListener('change', toggleExclusive); }
+})();
+</script>
+
+
+<script>
+(function(){
+  // Modal open/close
+  var openBtn = document.getElementById('open-mentee-modal');
+  var modal = document.getElementById('mentee-modal');
+  var closeBtn = document.getElementById('mentee-close');
+  var backdrop = document.getElementById('mentee-backdrop');
+  function open(){ lastScrollY = window.scrollY; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('kSF-no-scroll'); } }
+  function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('kSF-no-scroll'); window.scrollTo({top:lastScrollY||0}); } }
+  if(openBtn) openBtn.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  if(backdrop) backdrop.addEventListener('click', close);
+
+  // DOB logic
+  var dob = document.getElementById('mentee-dob');
+  var gBlock = document.getElementById('guardian-block');
+  var gErr = document.getElementById('guardian-error');
+  function calcAge(value){
+    var d = new Date(value);
+    if(!value || isNaN(d)) return null;
+    var t = new Date();
+    var age = t.getFullYear()-d.getFullYear();
+    var m = t.getMonth()-d.getMonth();
+    if(m<0 || (m===0 && t.getDate()<d.getDate())) age--;
+    return age;
+  }
+  function toggleGuardian(){
+    if(!dob || !gBlock) return;
+    var age = calcAge(dob.value);
+    var show = age!==null && age<17;
+    gBlock.style.display = show ? 'block' : 'none';
+    var gName = gBlock.querySelector('input[name="guardian_name"]');
+    var gContact = gBlock.querySelector('input[name="guardian_contact"]');
+    if(gName) gName.required = show;
+    if(gContact) gContact.required = show;
+    if(gErr) gErr.hidden = true;
+  }
+  if(dob){ dob.addEventListener('change', toggleGuardian); dob.addEventListener('input', toggleGuardian); toggleGuardian(); }
+
+  // Submit validation + inline thank-you
+  var form = document.getElementById('mentee-form');
+  var thanks = document.getElementById('mentee-thanks');
+  if(form){
+    form.addEventListener('submit', function(e){
+      var under17 = false;
+      if(dob){
+        var age = calcAge(dob.value);
+        under17 = (age!==null && age<17);
+      }
+      if(under17){
+        var gName = form.querySelector('input[name="guardian_name"]');
+        var gContact = form.querySelector('input[name="guardian_contact"]');
+        if((gName && !gName.value.trim()) || (gContact && !gContact.value.trim())){
+          e.preventDefault();
+          if(gErr) gErr.hidden = false;
+          if(gName && !gName.value.trim()) gName.focus();
+          return false;
+        }
+      }
+      // show temporary success message for local preview (Netlify will take over in production)
+      if(thanks){ thanks.style.display='inline-block'; setTimeout(function(){ thanks.style.display='none'; }, 2000); }
+    });
+  }
+})();
+</script>
+
+
+<!-- Mentee Application Modal (clean, single-column) -->
+<div id="mentee-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" id="mentee-backdrop"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="menteeTitle">
+    <button class="modal-close" id="mentee-close" aria-label="Close">×</button>
+    <h3 id="menteeTitle">Mentee Application</h3>
+
+    <form data-netlify-honeypot="bot-field" id="mentee-form" name="mentee-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="mentee-application">
+      <input type="hidden" name="form-name" value="mentee-application">
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+      <div class="stack">
+        <div class="form-row">
+          <label class="top">Full Name <span class="req">*</span></label>
+          <input type="text" name="full_name" required>
+        </div>
+
+        <div class="form-row">
+          <label class="top">Date of Birth (mm/dd/yyyy) <span class="req">*</span></label>
+          <input type="date" id="mentee-dob" name="dob" max="2025-09-28" required>
+          <small class="hint">If under 17, a parent/guardian’s info will be required.</small>
+        </div>
+
+        <div class="form-row">
+          <label class="top">Email <span class="req">*</span></label>
+          <input type="email" name="email" required>
+        </div>
+
+        <div class="form-row" id="guardian-block" style="display:none">
+          <label class="top">Parent/Guardian Name (if under 17) <span class="req">*</span></label>
+          <input type="text" name="parent_name">
+          <label class="top">Parent/Guardian Contact (if under 17) <span class="req">*</span></label>
+          <input type="text" name="parent_contact" placeholder="Phone or email">
+          <p class="field-error" id="guardian-error" hidden>Parent/guardian name and contact are required for applicants under 17.</p>
+        </div>
+
+        <div class="form-row">
+          <label class="top">What are you looking to gain from Kingdom Seeds Foundation? <span class="req">*</span></label>
+          <textarea name="goals" required placeholder="Share how we can best support you."></textarea>
+        </div>
+
+        <div class="consent-card">
+          <label class="inline-check">
+            <input type="checkbox" name="program_consent" required>
+            <span><b>Program Consent (required):</b> I consent to participate in Kingdom Seeds Foundation mentorship programs. If the applicant is under 17, I confirm I am the parent/guardian providing consent.</span>
+          </label>
+
+          <h4 style="margin:10px 0 6px">Social Media &amp; Media Consent (optional)</h4>
+          <p style="margin:0 0 8px">
+            <em>Kingdom Seeds Foundation may take photos, videos, or testimonies during events and activities. With your permission, we may use these for our social media, newsletters, or to share testimonies that inspire others. <b>Choosing not to consent will not affect your ability to participate in any way.</b></em>
+          </p>
+          <div class="radio-row">
+            <label><input type="radio" name="social_consent" value="yes"> Yes, I consent</label>
+            <label><input type="radio" name="social_consent" value="no"> No, I do not consent</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Submit Application</button>
+          <span id="mentee-thanks" class="success-msg" style="display:none">Thank you! Your application has been submitted.</span>
+        </div>
+      </div>
+    </form>
+<div id="thanks-mentee-application" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  // open/close modal
+  var openBtn = document.getElementById('open-mentee-modal');
+  var modal = document.getElementById('mentee-modal');
+  var closeBtn = document.getElementById('mentee-close');
+  var backdrop = document.getElementById('mentee-backdrop');
+  function open(){ lastScrollY = window.scrollY; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('kSF-no-scroll'); }
+  function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('kSF-no-scroll'); window.scrollTo({top:lastScrollY||0}); }
+  if(openBtn) openBtn.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  if(backdrop) backdrop.addEventListener('click', close);
+
+  // guardian logic
+  function calcAge(val){ var d=new Date(val); if(!val||isNaN(d)) return null; var t=new Date(); var a=t.getFullYear()-d.getFullYear(); var m=t.getMonth()-d.getMonth(); if(m<0||(m===0 && t.getDate()<d.getDate())) a--; return a; }
+  var dob=document.getElementById('mentee-dob'); var g=document.getElementById('guardian-block'); var gErr=document.getElementById('guardian-error');
+  function toggleG(){ if(!dob||!g) return; var age=calcAge(dob.value); var show=(age!==null && age<17); g.style.display=show?'block':'none'; var n=g.querySelector('[name="parent_name"]'); var c=g.querySelector('[name="parent_contact"]'); if(n) n.required=show; if(c) c.required=show; if(gErr) gErr.hidden=true; }
+  if(dob){ dob.addEventListener('input', toggleG); dob.addEventListener('change', toggleG); toggleG(); }
+
+  // inline thank-you (Netlify will handle real submit in production)
+  var form=document.getElementById('mentee-form'); var thanks=document.getElementById('mentee-thanks');
+  if(form) form.addEventListener('submit', function(e){ if(thanks){ thanks.style.display='inline-block'; setTimeout(function(){ thanks.style.display='none'; }, 1800); } });
+})();
+</script>
+
+
+<script>
+  // Ensure the Apply Now button opens the mentee modal
+  (function(){
+    var btn = document.getElementById('open-mentee-modal');
+    var modal = document.getElementById('mentee-modal');
+    function openMentee(){ if(modal){ modal.setAttribute('aria-hidden','false'); } }
+    function closeMentee(){ if(modal){ modal.setAttribute('aria-hidden','true'); } }
+    if(btn){ btn.addEventListener('click', function(e){ e.preventDefault(); openMentee(); }); }
+    // close handlers
+    document.addEventListener('click', function(e){
+      if(e.target && e.target.id==='mentee-close'){ closeMentee(); }
+      if(e.target && e.target.id==='mentee-backdrop'){ closeMentee(); }
+    });
+    // expose globally in case inline buttons exist
+    window.openMentee = openMentee;
+    window.closeMentee = closeMentee;
+  })();
+</script>
+
+
+<!-- Privacy Policy Modal (site-wide) -->
+<style>
+  .ksf-privacy-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.55);opacity:0;pointer-events:none;transition:.2s ease;z-index:1000}
+  .ksf-privacy-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:1001}
+  .ksf-privacy-modal.show,.ksf-privacy-backdrop.show{opacity:1;pointer-events:auto}
+  .ksf-privacy-dialog{max-width:900px;width:92vw;max-height:86vh;overflow:auto;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 20px 60px rgba(2,6,23,.35)}
+  .ksf-privacy-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e2e8f0}
+  .ksf-privacy-title{font-weight:800;letter-spacing:-.2px}
+  .ksf-privacy-close{appearance:none;border:1px solid #e2e8f0;background:#fff;border-radius:10px;padding:6px 10px;font-size:14px;cursor:pointer}
+  .ksf-privacy-body{padding:18px 20px}
+  .ksf-privacy-body .card{border:1px solid #e2e8f0;border-radius:14px;padding:16px 16px;margin:12px 0}
+  .ksf-privacy-body h2{font-size:18px;margin:14px 0 6px}
+  .ksf-privacy-body ul{margin:6px 0 10px 20px}
+</style>
+
+<div class="ksf-privacy-backdrop" id="ksfPrivacyBackdrop" aria-hidden="true"></div>
+<div class="ksf-privacy-modal" id="ksfPrivacyModal" role="dialog" aria-modal="true" aria-labelledby="ksfPrivacyTitle" aria-hidden="true">
+  <div class="ksf-privacy-dialog" role="document">
+    <div class="ksf-privacy-head">
+      <div class="ksf-privacy-title" id="ksfPrivacyTitle">Privacy Policy</div>
+      <button class="ksf-privacy-close" type="button" id="ksfPrivacyClose" aria-label="Close Privacy Policy">Close</button>
+    </div>
+    <div class="ksf-privacy-body" id="ksfPrivacyContent">
+      <div class="card"><h2>1. Information We Collect</h2>
+  <ul>
+    <li>Contact details you provide (such as name, email, phone number).</li>
+    <li>Information submitted through forms (e.g., volunteer sign-up, mentee applications, workshop requests, or donations).</li>
+  </ul>
+</div>
+<div class="card"><h2>2. How We Use Your Information</h2>
+  <ul>
+    <li>To respond to your requests and communicate with you.</li>
+    <li>To manage participation in mentorship programs, workshops, and events.</li>
+    <li>To send newsletters and updates if you choose to subscribe.</li>
+    <li>To issue donation receipts and maintain financial records.</li>
+  </ul>
+</div>
+<div class="card"><h2>3. Sharing Your Information</h2>
+  <p>We do not sell or rent your information. We only share information when:</p>
+  <ul>
+    <li>Required by law, or</li>
+    <li>Necessary to fulfill a program request (e.g., partnering with a school, church, or event host).</li>
+  </ul>
+</div>
+<div class="card"><h2>4. Photos, Videos, and Testimonials</h2>
+  <p>We will only use your image, story, or testimonial on social media or promotional material if you provide explicit consent.</p>
+</div>
+<div class="card"><h2>5. Security</h2>
+  <p>We take reasonable steps to protect your information. However, no system is 100% secure.</p>
+</div>
+<div class="card"><h2>6. Contact Us</h2>
+  <p>If you have questions about this policy or how your information is used, contact us at:<br>
+  <a href="mailto:info@kingdomseedsfoundation.org" data-cms="contact_email">info@kingdomseedsfoundation.org</a></a></p>
+</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Site-wide privacy modal with event delegation
+(function(){
+  var modal=null, backdrop=null, closeBtn=null, lastFocused=null;
+  function ensureEls(){ modal=modal||document.getElementById('ksfPrivacyModal'); backdrop=backdrop||document.getElementById('ksfPrivacyBackdrop'); closeBtn=closeBtn||document.getElementById('ksfPrivacyClose'); }
+  function openModal(){ ensureEls(); lastFocused=document.activeElement; document.body.style.overflow='hidden'; modal.classList.add('show'); backdrop.classList.add('show'); modal.setAttribute('aria-hidden','false'); backdrop.setAttribute('aria-hidden','false'); if(closeBtn) closeBtn.focus(); }
+  function closeModal(){ ensureEls(); modal.classList.remove('show'); backdrop.classList.remove('show'); modal.setAttribute('aria-hidden','true'); backdrop.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(lastFocused&&lastFocused.focus) lastFocused.focus(); }
+  function matchesPrivacy(a){
+    if(!a) return false;
+    var href=(a.getAttribute('href')||'').trim().toLowerCase();
+    var txt=(a.textContent||'').trim().toLowerCase();
+    if(href.startsWith('mailto:')) return false;
+    if(a.dataset&&a.dataset.privacyLink==='true') return true;
+    if(href.endsWith('privacy.html')||href==='#privacy') return true;
+    if(txt==='privacy'||txt==='privacy policy'||txt.indexOf('privacy')!==-1) return true;
+    return false;
+  }
+  function tagLinks(){
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var href=(a.getAttribute('href')||'').toLowerCase();
+      var txt=(a.textContent||'').toLowerCase();
+      if(href.endsWith('privacy.html')||txt.indexOf('privacy')!==-1){ a.setAttribute('data-privacy-link','true'); }
+    });
+  }
+  function onDocClick(e){
+    var a=e.target.closest?e.target.closest('a'):null;
+    if(!a) return;
+    if(matchesPrivacy(a)){
+      if(e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){
+        e.preventDefault();
+        openModal();
+      }
+    }
+  }
+  function onKey(e){ if(e.key==='Escape') closeModal(); }
+  function onReady(){ tagLinks(); ensureEls(); document.addEventListener('click', onDocClick); if(backdrop) backdrop.addEventListener('click', closeModal); if(closeBtn) closeBtn.addEventListener('click', closeModal); document.addEventListener('keydown', onKey); if(location.hash==='#privacy'){ openModal(); } }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', onReady); } else { onReady(); }
+})();
+</script>
+
+
+<script>
+(function(){
+  function setupFAQ(root){
+    var items = root.querySelectorAll('.faq-item');
+    items.forEach(function(item, idx){
+      var btn = item.querySelector('.faq-question');
+      var panel = item.querySelector('.faq-answer');
+      if(!btn || !panel) return;
+      var qId = btn.id || ('faq_q_' + idx);
+      var pId = panel.id || ('faq_a_' + idx);
+      btn.id = qId; panel.id = pId;
+      btn.setAttribute('aria-controls', pId);
+      btn.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+      btn.setAttribute('type', 'button');
+      panel.setAttribute('role','region');
+      panel.setAttribute('aria-labelledby', qId);
+      function toggle(open){
+        var isOpen = typeof open==='boolean' ? open : !item.classList.contains('open');
+        item.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        panel.style.maxHeight = isOpen ? (panel.scrollHeight + 'px') : '0px';
+      }
+      if(item.classList.contains('open')){ panel.style.maxHeight = panel.scrollHeight + 'px'; } else { panel.style.maxHeight = '0px'; }
+      btn.addEventListener('click', function(e){ e.preventDefault(); toggle(); });
+      btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+      window.addEventListener('resize', function(){ if(item.classList.contains('open')) panel.style.maxHeight = panel.scrollHeight + 'px'; });
+    });
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', function(){ setupFAQ(document); }); } else { setupFAQ(document); }
+})();
+</script>
+
+
+<!-- Donate Modal (placeholder until bank approval) -->
+<style>
+.ksf-donate-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.55);opacity:0;pointer-events:none;transition:.2s ease;z-index:1000}
+.ksf-donate-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:1001}
+.ksf-donate-modal.show,.ksf-donate-backdrop.show{opacity:1;pointer-events:auto}
+.ksf-donate-dialog{max-width:560px;width:92vw;max-height:86vh;overflow:auto;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 20px 60px rgba(2,6,23,.35)}
+.ksf-donate-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #e2e8f0}
+.ksf-donate-title{font-weight:800;letter-spacing:-.2px}
+.ksf-donate-close{appearance:none;border:1px solid #e2e8f0;background:#fff;border-radius:10px;padding:6px 10px;font-size:14px;cursor:pointer}
+.ksf-donate-body{padding:18px 20px}
+.ksf-donate-body .card{border:1px solid #e2e8f0;border-radius:14px;padding:16px 16px;margin:12px 0}
+.ksf-donate-actions{display:flex;gap:10px;justify-content:flex-end;padding:0 20px 20px}
+.ksf-btn{appearance:none;border:1px solid #1C7C3C;background:#1C7C3C;color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+.ksf-btn.secondary{background:#fff;color:#1C7C3C}
+</style>
+
+<script>
+// Set this to your live checkout URL when ready (Stripe/PayPal/Donorbox)
+window.KSF_DONATE_URL = window.KSF_DONATE_URL || ""; 
+</script>
+
+<div class="ksf-donate-backdrop" id="ksfDonateBackdrop" aria-hidden="true"></div>
+<div class="ksf-donate-modal" id="ksfDonateModal" role="dialog" aria-modal="true" aria-labelledby="ksfDonateTitle" aria-hidden="true">
+  <div class="ksf-donate-dialog">
+    <div class="ksf-donate-head">
+      <div class="ksf-donate-title" id="ksfDonateTitle">Donations Opening Soon</div>
+      <button class="ksf-donate-close" type="button" id="ksfDonateClose" aria-label="Close">Close</button>
+    </div>
+    <div class="ksf-donate-body">
+      <div class="card">
+        <p>We’re finalizing our banking approval. Donations will be available here shortly.</p>
+        <p>If you’d like to be notified when giving opens, email us at <a href="mailto:info@kingdomseedsfoundation.org" data-cms="contact_email">info@kingdomseedsfoundation.org</a></a>.</p>
+      </div>
+    </div>
+    <div class="ksf-donate-actions">
+      <button class="ksf-btn secondary" id="ksfDonateEmail">Email Us</button>
+      <button class="ksf-btn" id="ksfDonateNotify">Remind Me</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal, backdrop, closeBtn, emailBtn, notifyBtn, lastFocused;
+  function el(id){ return document.getElementById(id); }
+  function ensureEls(){
+    modal = modal || el('ksfDonateModal');
+    backdrop = backdrop || el('ksfDonateBackdrop');
+    closeBtn = closeBtn || el('ksfDonateClose');
+    emailBtn = emailBtn || el('ksfDonateEmail');
+    notifyBtn = notifyBtn || el('ksfDonateNotify');
+  }
+  function openModal(){
+    ensureEls();
+    lastFocused = document.activeElement;
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('show'); backdrop.classList.add('show');
+    modal.setAttribute('aria-hidden','false'); backdrop.setAttribute('aria-hidden','false');
+    closeBtn && closeBtn.focus();
+  }
+  function closeModal(){
+    ensureEls();
+    modal.classList.remove('show'); backdrop.classList.remove('show');
+    modal.setAttribute('aria-hidden','true'); backdrop.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+  function handleDonateClick(e){
+    var t = e.target.closest && e.target.closest('a');
+    if(!t) return;
+    if(t.classList.contains('donate-link')){
+      if (e.button===0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey){
+        e.preventDefault();
+        if (window.KSF_DONATE_URL){
+          window.open(window.KSF_DONATE_URL, '_blank', 'noopener');
+        } else {
+          openModal();
+        }
+      }
+    }
+  }
+  function onReady(){
+    ensureEls();
+    document.addEventListener('click', handleDonateClick);
+    backdrop && backdrop.addEventListener('click', closeModal);
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    emailBtn && emailBtn.addEventListener('click', function(){ window.location.href = 'mailto:info@kingdomseedsfoundation.org?subject=Donation%20Inquiry'; });
+    notifyBtn && notifyBtn.addEventListener('click', function(){ window.location.href = 'mailto:info@kingdomseedsfoundation.org?subject=Notify%20me%20when%20donations%20open'; });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', onReady); } else { onReady(); }
+})();
+</script>
+
+
+<script>
+// Mobile-only top-drop hamburger (≤600px). Desktop untouched.
+(function(){
+  var btn, panel, links, lastScrollY;
+  function qs(s){ return document.querySelector(s); }
+  function ready(fn){ if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', fn); } else { fn(); } }
+
+  function init(){
+    btn = qs('#ksfHamburger');
+    panel = qs('#ksfMobileMenu');
+    links = qs('#ksfMobileLinks');
+    var srcNav = document.querySelector('header nav');
+    if(!btn || !panel || !links || !srcNav) return;
+    if(!links.dataset.filled){
+      links.innerHTML = srcNav.innerHTML;
+      links.dataset.filled = '1';
+    }
+    btn.addEventListener('click', toggle);
+    panel.addEventListener('click', function(e){ if(e.target === panel) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    panel.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a');
+      if(a){ close(); }
+    });
+  }
+  function toggle(){ panel.classList.contains('open') ? close() : open(); }
+  function open(){ lastScrollY = window.scrollY; panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.classList.add('kSF-no-scroll'); }
+  function close(){ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.classList.remove('kSF-no-scroll'); window.scrollTo({top:lastScrollY||0}); }); }
+
+  ready(init);
+})();
+</script>
+
+
+<script>
+(function(){
+  var btn=document.getElementById("ksfHamburger");
+  var panel=document.getElementById("ksfMobileMenu");
+  var lastScrollY=0;
+  if(!btn||!panel) return;
+  function openM(){
+    lastScrollY=window.scrollY||0;
+    panel.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+    document.body.classList.add("kSF-no-scroll");
+  }
+  function closeM(){
+    panel.classList.remove("open");
+    btn.setAttribute("aria-expanded","false");
+    document.body.classList.remove("kSF-no-scroll");
+    window.scrollTo({top:lastScrollY});
+  }
+  function toggle(){ panel.classList.contains("open")?closeM():openM(); }
+  btn.addEventListener("click",function(e){ e.preventDefault(); toggle(); });
+  panel.addEventListener("click",function(e){ if(e.target===panel) closeM(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&panel.classList.contains("open")) closeM(); });
+  window.kToggleMenu=toggle;
+})();
+</script>
+
+
+<script>
+(function(){
+  var links = document.getElementById('ksfMobileLinks');
+  if(!links || links.dataset.filled) return;
+  var navs = document.querySelectorAll('header nav');
+  var html = '';
+  navs.forEach(function(n){ html += n.innerHTML; });
+  if(html.trim().length){
+    links.innerHTML = html;
+    links.dataset.filled = '1';
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  var panel = document.getElementById('ksfMobileMenu');
+  var btn = document.getElementById('ksfHamburger');
+  var linksWrap = document.getElementById('ksfMobileLinks');
+  if(!panel || !linksWrap) return;
+
+  function closeM(){
+    panel.classList.remove('open');
+    if(btn){ btn.setAttribute('aria-expanded','false'); }
+    document.body.classList.remove('kSF-no-scroll');
+  }
+
+  linksWrap.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a');
+    if(!a) return;
+    var href = a.getAttribute('href') || '';
+    if(href.startsWith('#')){
+      e.preventDefault();
+      closeM();
+      // perform anchor jump after panel closes
+      setTimeout(function(){ location.hash = href; }, 60);
+    }else if(href === '' || href === '#'){
+      // do nothing
+      closeM();
+      e.preventDefault();
+    }else{
+      // regular navigation: close then allow default to carry on
+      closeM();
+      // no preventDefault => browser navigates
+    }
+  });
+})();
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.querySelector(".mobile-menu").classList.remove("open");
+    });
+  });
+});
+</script>
+
+
+<!-- Netlify hidden template forms (ensure detection at build time) -->
+<form method="POST" name="contact" netlify netlify-honeypot="bot-field" hidden<input type="hidden" name="form-name" value="contact"<p hidden data-netlify="true" data-inline-thanks="contact"><input type="hidden" name="form-name" value="contact"><label>Don’t fill this out: <input name="bot-field"></label></p>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <textarea name="message"></textarea>
+</form>
+<div id="thanks-contact" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+<form method="POST" name="volunteer" netlify netlify-honeypot="bot-field" hidden<input type="hidden" name="form-name" value="contact"<p hidden data-netlify="true" data-inline-thanks="volunteer"><input type="hidden" name="form-name" value="volunteer"><label>Don’t fill this out: <input name="bot-field"></label></p>
+  <input type="text" name="name">
+  <input type="email" name="email">
+</form>
+<div id="thanks-volunteer" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+<form method="POST" name="mentee" netlify netlify-honeypot="bot-field" hidden<input type="hidden" name="form-name" value="contact"<p hidden data-netlify="true" data-inline-thanks="mentee"><input type="hidden" name="form-name" value="mentee"><label>Don’t fill this out: <input name="bot-field"></label></p>
+  <input type="text" name="name">
+  <input type="email" name="email">
+</form>
+<div id="thanks-mentee" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+<form method="POST" name="newsletter" netlify netlify-honeypot="bot-field" hidden<input type="hidden" name="form-name" value="contact"<p hidden data-netlify="true" data-inline-thanks="newsletter"><input type="hidden" name="form-name" value="newsletter"><label>Don’t fill this out: <input name="bot-field"></label></p>
+  <input type="email" name="email">
+</form>
+<div id="thanks-newsletter" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+<form method="POST" name="workshop" netlify netlify-honeypot="bot-field" hidden<input type="hidden" name="form-name" value="contact"<p hidden data-netlify="true" data-inline-thanks="workshop"><input type="hidden" name="form-name" value="workshop"><label>Don’t fill this out: <input name="bot-field"></label></p>
+  <input type="text" name="host">
+  <input type="email" name="email">
+</form>
+<div id="thanks-workshop" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<div class="thank-you-message" style="display:none; margin-top:10px; color:#166534; font-weight:600; background:#ecfdf5; border:1px solid #bbf7d0; padding:10px 12px; border-radius:10px" tabindex="-1">Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.</div>
+
+
+
+<script id="KSF_INLINE_THANKS">
+document.addEventListener("DOMContentLoaded",function(){
+  function encodeFormData(form){
+    const data = new FormData(form);
+    return new URLSearchParams(data).toString();
+  }
+  document.querySelectorAll('form[data-netlify], form[netlify]').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const enc = encodeFormData(form);
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: enc
+      }).then(function(){
+        form.style.display = "none";
+        var msg = form.nextElementSibling && form.nextElementSibling.classList && form.nextElementSibling.classList.contains('thank-you-message')
+          ? form.nextElementSibling
+          : null;
+        if(!msg){
+          msg = document.createElement('div');
+          msg.className = 'thank-you-message';
+          msg.style.cssText = 'display:block;margin-top:10px;color:#166534;font-weight:600;background:#ecfdf5;border:1px solid #bbf7d0;padding:10px 12px;border-radius:10px';
+          msg.textContent = 'Thank you! Your submission has been received. We’re grateful for your interest in Kingdom Seeds Foundation and excited to keep you connected with our mission.';
+          form.parentNode.insertBefore(msg, form.nextSibling);
+        } else {
+          msg.style.display = "block";
+        }
+        try{ msg.focus(); }catch(_){}
+      }).catch(function(){
+        alert("There was an error submitting the form. Please try again.");
+      });
+    });
+  });
+});
+</script>
+
+<script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+<script id="ksf-inline-thanks-script">
+(function(){
+  function attachInlineThanks(form){
+    var key = form.getAttribute('data-inline-thanks') || form.getAttribute('name') || 'generic';
+    var thanks = document.getElementById('thanks-' + key);
+    if (!thanks) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var orig = btn ? (btn.textContent || btn.value) : null;
+      if (btn){ btn.disabled = true; if (btn.textContent){ btn.textContent = 'Sending…'; } }
+
+      var fd = new FormData(form);
+      // Ensure Netlify sees the form name
+      if (!fd.get('form-name')){
+        var fname = form.getAttribute('name');
+        if (fname) fd.append('form-name', fname);
+      }
+
+      fetch('/', { method:'POST', body: fd })
+        .then(function(){
+          // Option B: keep the form visible; just reveal the thank-you box
+          thanks.hidden = false;
+          if (thanks.focus) thanks.focus();
+        })
+        .catch(function(){
+          alert('Sorry, something went wrong. Please try again.');
+        })
+        .finally(function(){
+          if (btn){ btn.disabled = false; if (orig){ btn.textContent = orig; } }
+        });
+    });
+  }
+
+  document.querySelectorAll('form[data-inline-thanks]').forEach(attachInlineThanks);
+})();
+</script>
+
+<script>
+fetch('/content/site.json', {cache:'no-store'}).then(r=>r.json()).then(data=>{
+  const hero = document.querySelector('[data-cms="hero_tagline"]');
+  if (hero) hero.textContent = data.hero_tagline || hero.textContent;
+
+  const mission = document.querySelector('[data-cms="mission_text"]');
+  if (mission) mission.textContent = data.mission_text || mission.textContent;
+
+  const about = document.querySelector('[data-cms="footer_about"]');
+  if (about) about.textContent = data.footer_about || about.textContent;
+
+  const email = document.querySelector('[data-cms="contact_email"]');
+  if (email) { email.textContent = data.contact_email; email.href = 'mailto:'+data.contact_email; }
+  const loc = document.querySelector('[data-cms="location"]');
+  if (loc) loc.textContent = data.location;
+
+  const ig = document.querySelector('[data-cms="instagram"]');
+  if (ig && data.socials) ig.href = data.socials.instagram;
+  const tt = document.querySelector('[data-cms="tiktok"]');
+  if (tt && data.socials) tt.href = data.socials.tiktok;
+  const fb = document.querySelector('[data-cms="facebook"]');
+  if (fb && data.socials) fb.href = data.socials.facebook;
+
+  const goalsList = document.querySelector('[data-cms="monthly_goals"]');
+  if (goalsList && Array.isArray(data.monthly_goals)) {
+    goalsList.innerHTML = '';
+    data.monthly_goals.forEach(item=>{
+      const li = document.createElement('li');
+      li.textContent = item.title;
+      goalsList.appendChild(li);
+    });
+  }
+
+  const faqWrap = document.querySelector('[data-cms="faqs"]');
+  if (faqWrap && Array.isArray(data.faqs)) {
+    faqWrap.innerHTML = '';
+    data.faqs.forEach((item, i)=>{
+      const d = document.createElement('details');
+      const s = document.createElement('summary');
+      s.textContent = item.q;
+      const p = document.createElement('p');
+      p.textContent = item.a;
+      d.appendChild(s); d.appendChild(p);
+      faqWrap.appendChild(d);
+    });
+  }
+
+  const note = document.querySelector('[data-cms="newsletter_note"]');
+  if (note) note.textContent = data.newsletter_note || note.textContent;
+
+  const policy = document.querySelector('[data-cms="privacy_policy"]');
+  if (policy && data.privacy_policy) policy.innerHTML = window.marked ? marked.parse(data.privacy_policy) : data.privacy_policy;
+
+  const dthanks = document.querySelector('[data-cms="donation_thanks"]');
+  if (dthanks) dthanks.innerHTML = data.donation_thanks;
+  const nthanks = document.querySelector('[data-cms="newsletter_thanks"]');
+  if (nthanks) nthanks.textContent = data.newsletter_thanks;
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</body></html>

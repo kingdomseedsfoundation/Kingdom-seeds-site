@@ -1,0 +1,57 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    label_singular: "Site Content"
+    files:
+      - file: "content/site.json"
+        label: "Editable Text & Lists"
+        name: "site_json"
+        fields:
+          - { label: "Hero Tagline", name: "hero_tagline", widget: "string", default: "Rooted in Faith. Growing in Purpose." }
+          - { label: "Mission (Paragraph)", name: "mission_text", widget: "text" }
+          - { label: "Footer About (Short)", name: "footer_about", widget: "text" }
+          - { label: "Contact Email", name: "contact_email", widget: "string", default: "info@kingdomseedsfoundation.org" }
+          - { label: "Location (City, State)", name: "location", widget: "string", default: "Houston, TX" }
+          - label: "Monthly Goals"
+            name: "monthly_goals"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Goal", name: "title", widget: "string" }
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "q", widget: "string" }
+              - { label: "Answer", name: "a", widget: "text" }
+          - label: "Social Links"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string", default: "https://instagram.com/kingdomseedsfoundation" }
+              - { label: "TikTok URL", name: "tiktok", widget: "string", default: "https://www.tiktok.com/@kingdomseedsfoundation" }
+              - { label: "Facebook URL", name: "facebook", widget: "string", default: "https://www.facebook.com/share/1ESEWvSdsy/?mibextid=wwXIfr" }
+          - label: "Newsletter Note (Privacy)"
+            name: "newsletter_note"
+            widget: "string"
+            default: "We respect your privacy. We’ll never share your email."
+          - label: "Privacy Policy (Modal Content)"
+            name: "privacy_policy"
+            widget: "markdown"
+          - label: "Thank-You: Donation"
+            name: "donation_thanks"
+            widget: "markdown"
+            default: "Thank you for sowing into Kingdom Seeds Foundation. Your generosity helps us build a Christ-centered community and equip mentees through stewardship, mentorship, and opportunity."
+          - label: "Thank-You: Newsletter Signup"
+            name: "newsletter_thanks"
+            widget: "string"
+            default: "Thanks for joining our newsletter! We’re glad you’re here."

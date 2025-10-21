@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Netlify Form Detector</title><meta name="robots" content="noindex"><style>body{display:none}</style>
+<style id="ksf-inline-thanks-style">
+.thanks-box[hidden]{display:none!important;}
+.thanks-box{margin-top:12px;border:1px solid #e5e7eb;padding:12px;border-radius:8px;background:#fff;}
+</style>
+</head><body>
+<form name="volunteer" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="volunteer">
+  <input type="hidden" name="form-name" value="volunteer"><input type="text" name="bot-field">
+  <input type="text" name="full_name"><input type="email" name="email"></form>
+<div id="thanks-volunteer" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<form name="mentee" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="mentee">
+  <input type="hidden" name="form-name" value="mentee"><input type="text" name="bot-field">
+  <input type="text" name="full_name"><input type="email" name="email"></form>
+<div id="thanks-mentee" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="newsletter">
+  <input type="hidden" name="form-name" value="newsletter"><input type="text" name="bot-field">
+  <input type="email" name="email"></form>
+<div id="thanks-newsletter" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<form name="workshop" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-inline-thanks="workshop">
+  <input type="hidden" name="form-name" value="workshop"><input type="text" name="bot-field">
+  <input type="text" name="organizer"><input type="email" name="email"></form>
+<div id="thanks-workshop" class="thanks-box" hidden tabindex="-1" aria-live="polite"><p><strong>Thanks for connecting with Kingdom Seeds Foundation!</strong><br>Someone from our team will follow up with you shortly. We're grateful for your interest in our mission.</p></div>
+<script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+<script id="ksf-inline-thanks-script">
+(function(){
+  function attachInlineThanks(form){
+    var key = form.getAttribute('data-inline-thanks') || form.getAttribute('name') || 'generic';
+    var thanks = document.getElementById('thanks-' + key);
+    if (!thanks) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var orig = btn ? (btn.textContent || btn.value) : null;
+      if (btn){ btn.disabled = true; if (btn.textContent){ btn.textContent = 'Sending…'; } }
+
+      var fd = new FormData(form);
+      // Ensure Netlify sees the form name
+      if (!fd.get('form-name')){
+        var fname = form.getAttribute('name');
+        if (fname) fd.append('form-name', fname);
+      }
+
+      fetch('/', { method:'POST', body: fd })
+        .then(function(){
+          // Option B: keep the form visible; just reveal the thank-you box
+          thanks.hidden = false;
+          if (thanks.focus) thanks.focus();
+        })
+        .catch(function(){
+          alert('Sorry, something went wrong. Please try again.');
+        })
+        .finally(function(){
+          if (btn){ btn.disabled = false; if (orig){ btn.textContent = orig; } }
+        });
+    });
+  }
+
+  document.querySelectorAll('form[data-inline-thanks]').forEach(attachInlineThanks);
+})();
+</script>
+</body></html>
